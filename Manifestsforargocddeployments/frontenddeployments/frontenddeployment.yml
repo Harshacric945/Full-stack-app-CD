@@ -22,6 +22,8 @@ spec:
       containers:
         - name: frontend
           image: harshakoppu945/fsfrontend:v2
+          ports:
+            - containerPort: 80
           resources:
             requests:
               cpu: 200m
@@ -31,13 +33,13 @@ spec:
               memory: 512Mi
           livenessProbe:
             httpGet:
-              path: /health
+              path: /
               port: 80
             initialDelaySeconds: 5
             periodSeconds: 10
           readinessProbe:
             httpGet:
-              path: /ready
+              path: /
               port: 80
             initialDelaySeconds: 5
             periodSeconds: 10
