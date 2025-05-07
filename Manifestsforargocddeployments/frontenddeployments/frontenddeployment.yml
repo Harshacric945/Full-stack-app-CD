@@ -43,6 +43,14 @@ spec:
               port: 80
             initialDelaySeconds: 5
             periodSeconds: 10
+          volumeMounts:
+            - name: env-js
+              mountPath: /usr/share/nginx/html/env.js
+              subPath: env.js
+      volumes:
+        - name: env-js
+          configMap:
+            name: frontend-env
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
